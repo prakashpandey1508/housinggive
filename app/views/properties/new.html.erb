@@ -1,0 +1,35 @@
+
+<ol>
+  <% @property.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+</ol>
+
+<%= form_with(model: @property) do |f| %>
+<div class="container">
+    <div class="content">
+       <img src="https://res.cloudinary.com/debbsefe/image/upload/f_auto,c_fill,dpr_auto,e_grayscale/image_fz7n7w.webp" alt="header-image" class="cld-responsive">
+            <h1 class="form-title">Register Here</h1>
+            <form>
+            <%= f.label :Name %>
+            <%= f.text_field :name %>
+            <div>
+            <%= f.label :descripition %>
+            <br>
+            <%= f.text_field :descripition %>
+            </div>
+            <%= f.label :price %>
+            <br>
+            <%= f.number_field :price %>
+            <br>
+          
+            <%= f.label :address %>
+            <%= f.text_field :address%>
+
+            <%= f.file_field :images, multiple: true%>
+
+             <%= f.submit%>
+            </form>
+        </div>
+ </div>
+<% end%>

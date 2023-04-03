@@ -1,0 +1,36 @@
+<h1>Companies#show</h1>
+<p>Find me in app/views/companies/show.html.erb</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Company id</th>
+      <th scope="col">Name of the company</th>
+      <th scope="col">Company email</th>
+      <th scope="col">company number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%= @companies.id%></th>
+      <td><%= @companies.name %></td>
+      <td><%= @companies.email %></td>
+      <td><%= @companies.number %></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+ 
+
+
+
+
+
+
+<%= link_to 'edit company',edit_company_path(@companies)%>
+<%= link_to 'create agent',new_agent_path(@agents)%>
+<%= link_to 'show agent', agents_index_path%>
+
+
+

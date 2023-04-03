@@ -1,0 +1,31 @@
+
+<%= render  "layouts/nav"%>
+<%= link_to 'Create company', new_company_path,class: 'p-2 text-dark'%>
+<h1 style="text-align:center;color:green;">
+            Company  
+        </h1>
+
+    <table class="table table-bordered border-primary">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name of company</th>
+      <th scope="col">Edit company</th>
+      <th scope="col">Remove comapny</th>
+    </tr>
+  </thead>
+  <% @companies.each do |std| %>
+  <tbody>
+    <tr>
+    
+      <th scope="row"><%= std.id%></th>
+      <td><%= link_to std.name, company_path(std)%></td>
+      <td><%= button_to 'Edit',edit_company_path(std),method:'get' %></td>
+      <td><%= button_to 'remove',company_path(std),method:'delete',data:"are you confirm" %></td>
+     
+    </tr>
+   
+  </tbody>
+  <%end %>
+</table>
+

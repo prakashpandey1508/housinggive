@@ -1,0 +1,20 @@
+<h1>Companies#edit</h1>
+<p>Find me in app/views/companies/edit.html.erb</p>
+<h3>Update  profile</h3>
+<%= form_with model: @companies do |ats| %>
+     <%= ats.text_field :name,placeholder: "Enter company  name" %>
+     <br>
+     <br>
+     <%= ats.text_field :email, placeholder:"enter the email address" %>
+
+     <br>
+     <br>
+     
+       
+     <br>
+     <br>
+     <%= ats.text_field :phonenumber, placeholder:"enter the phone number" %>
+<br>
+<br>
+    <%= ats.submit class: "btn btn-primary"%>
+<%end%>

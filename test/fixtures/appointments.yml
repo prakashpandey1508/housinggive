@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  agent: one
+  date: 2023-03-28 15:30:56
+
+two:
+  user: two
+  agent: two
+  date: 2023-03-28 15:30:56

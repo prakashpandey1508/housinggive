@@ -1,0 +1,26 @@
+<h1>Properties#edit</h1>
+<p>Find me in app/views/properties/edit.html.erb</p>
+<h3>Update  profile</h3>
+<%= form_with model: @property do |ats| %>
+     <%= ats.text_field :name,placeholder: "Property  name" %>
+     <br>
+     <br>
+     <%= ats.text_field :descripition, placeholder:"enter the email address" %>
+
+     <br>
+     <br>
+     <%= ats.text_field :price, placeholder:"Price" %>
+
+     <br>
+       
+     <br>
+     <br>
+     <%= ats.text_field :address, placeholder:"enter the address" %>
+
+     <br>
+  <%= ats.file_field:image%>
+  <br>
+<br>
+<br>
+    <%= ats.submit class: "btn btn-primary"%>
+<%end%>

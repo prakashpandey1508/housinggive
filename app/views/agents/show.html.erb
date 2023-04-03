@@ -1,0 +1,33 @@
+<h1>Agents List</h1>
+<p></p>
+<table class="table">
+  <thead>
+    <tr>
+      
+      <th scope="col">Agent id</th>
+      <th scope="col">Agent name</th>
+      <th scope="col">agent email</th>
+      <th scope="col">agent number</th>
+      <th scope="col">agent address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+      <td><%= @agents.id %></td>
+      <td><%= @agents.name %></td>
+      <td><%= @agents.email %></td>
+      <td><%= @agents.number%></td>
+      <td><%= @agents.address%></td>
+    </tr>
+     
+  </tbody>
+</table>
+<%if agent_signed_in? %>
+<%= link_to 'edit agents',edit_agent_path(@agents)%>
+<%= link_to 'create Property',new_property_path%>
+<%end%>
+
+
+ <%= render "comments/commentouput"%>
+    <%= render "comments/commentform"%>

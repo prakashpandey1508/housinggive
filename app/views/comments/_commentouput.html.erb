@@ -1,0 +1,27 @@
+
+<%= link_to "New Comment", [:new, @commentable, :comment] %>
+    <div class="row  text-warning" >
+    
+<% @comments.each do |comment|%>
+        <div class="col-8">
+            <div class="card card-white post">
+                <div class="post-heading">
+
+                    <div class="float-left image">
+                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                    </div>
+                    <div class="float-left meta">
+                        <div class="title h5">
+                            <a href="#"><b></b></a>
+                            made a comment
+                        </div>
+                        <h6 class="text-muted time"><%= time_ago_in_words(comment.created_at) %></h6>
+                    </div>
+                </div> 
+                <div class="post-description"> 
+                    <p><%= simple_format comment.content%></p>
+                </div>
+            </div>
+        </div>
+        <%end%>
+    </div>

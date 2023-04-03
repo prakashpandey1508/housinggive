@@ -1,0 +1,45 @@
+// Place all the styles related to the public controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.navbar .navbar-nav .nav-link {
+    color: #000;
+    font-size: 1.1em;
+    padding: 0.8em;
+  }
+  .navbar {
+    border-bottom: 5px solid #3a0ca3;
+  }
+  
+  .navbar .navbar-nav .nav-link.active {
+    background-color: #3a0ca3;
+    color: #fff;
+  }
+  @media screen and (min-width: 992px) {
+    .navbar {
+      padding: 0;
+    }
+  }
+  @media screen and (max-width: 991px) {
+    .navbar-nav {
+      padding-top: 0.5em;
+    }
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+  
+  /* Create four equal columns that sits next to each other */
+  .column {
+    flex: 25%;
+    max-width: 25%;
+   padding: 0 4px;
+   margin-top: 8px;
+   width: 100%;
+    height: 60%;
+  }
+  
+  /* Responsive layout - makes a two column-layout instead of four columns */
+  

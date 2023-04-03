@@ -1,0 +1,21 @@
+<ol>
+  <% @property.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+</ol>
+
+
+<%= form_for @property do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br><br>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %><br><br>
+  <%= f.label :number %>
+  <%= f.number_field :number %><br><br>
+
+  <%= f.label :address %>
+  <%= f.text_field :address%><br><br>
+  <%= collection_select(:property,:agent_id,Agent.all,:id,:name,prompt:true)%>
+  <%= f.submit %>
+<% end %>
