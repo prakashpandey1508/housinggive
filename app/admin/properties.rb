@@ -13,6 +13,8 @@ ActiveAdmin.register Property do
   #   permitted = [:name, :descripition, :price, :address, :agent_id]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
-  # end
-  
+    filter :name
+    filter :address
+    filter :price
+    filter :agents, as: :select, collection: proc { Agent.pluck(:name, :id) }
 end

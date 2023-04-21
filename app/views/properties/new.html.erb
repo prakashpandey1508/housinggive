@@ -12,8 +12,10 @@
             <h1 class="form-title">Register Here</h1>
             <form>
             <%= f.label :Name %>
+            <br>
             <%= f.text_field :name %>
             <div>
+            <br>
             <%= f.label :descripition %>
             <br>
             <%= f.text_field :descripition %>
@@ -22,13 +24,21 @@
             <br>
             <%= f.number_field :price %>
             <br>
-          
+            
             <%= f.label :address %>
+            <br>
             <%= f.text_field :address%>
-
+            <br>
+            <%= f.label :image %>
+             <br>
             <%= f.file_field :images, multiple: true%>
-
-             <%= f.submit%>
+            <br>
+            <br>
+            <p>Choose property</p>
+            <br>
+            <%= f.collection_select :propertytype_id, Propertytype.all, :id, :name, { prompt: true }, { class: 'form-control' } %>
+            <br>
+               <%= f.submit%>
             </form>
         </div>
  </div>

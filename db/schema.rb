@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_02_201242) do
+ActiveRecord::Schema.define(version: 2023_04_18_051945) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -98,7 +98,9 @@ ActiveRecord::Schema.define(version: 2023_04_02_201242) do
     t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "property_id", null: false
     t.index ["agent_id"], name: "index_appointments_on_agent_id"
+    t.index ["property_id"], name: "index_appointments_on_property_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
@@ -108,6 +110,7 @@ ActiveRecord::Schema.define(version: 2023_04_02_201242) do
     t.integer "commentable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
     t.index ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
   end
@@ -120,6 +123,34 @@ ActiveRecord::Schema.define(version: 2023_04_02_201242) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "oauth_access_tokens", force: :cascade do |t|
+    t.integer "resource_owner_id"
+    t.integer "application_id", null: false
+    t.string "token", null: false
+    t.string "refresh_token"
+    t.integer "expires_in"
+    t.datetime "revoked_at"
+    t.datetime "created_at", null: false
+    t.string "scopes"
+    t.string "previous_refresh_token", default: "", null: false
+    t.index ["application_id"], name: "index_oauth_access_tokens_on_application_id"
+    t.index ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true
+    t.index ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id"
+    t.index ["token"], name: "index_oauth_access_tokens_on_token", unique: true
+  end
+
+  create_table "oauth_applications", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "uid", null: false
+    t.string "secret", null: false
+    t.text "redirect_uri"
+    t.string "scopes", default: "", null: false
+    t.boolean "confidential", default: true, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
+  end
+
   create_table "properties", force: :cascade do |t|
     t.string "name"
     t.string "descripition"
@@ -128,7 +159,15 @@ ActiveRecord::Schema.define(version: 2023_04_02_201242) do
     t.integer "agent_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "propertytype_id" 
     t.index ["agent_id"], name: "index_properties_on_agent_id"
+    t.index ["propertytype_id"], name: "index_properties_on_propertytype_id"
+  end
+
+  create_table "propertytypes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -150,6 +189,9 @@ ActiveRecord::Schema.define(version: 2023_04_02_201242) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "agents", "companies"
   add_foreign_key "appointments", "agents"
+  add_foreign_key "appointments", "properties"
   add_foreign_key "appointments", "users"
+  add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "properties", "agents"
+  add_foreign_key "properties", "propertytypes"
 end

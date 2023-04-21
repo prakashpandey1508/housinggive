@@ -1,9 +1,8 @@
 
-
+<div style="background-image: url('https://img.freepik.com/free-photo/villa-house-model-key-drawing-retro-desktop-real-estate-sale-concept_1387-310.jpg?w=1060&t=st=1681844467~exp=1681845067~hmac=423cac9f5252a28296bafa1ede94ab30f684465a06bb3a69fc3bb666ba38e1f5'); background-size: cover; background-repeat: no-repeat;" >
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
-<div class="form_wrapper">
+<div class="form_wrapper"  style="margin-left:1196px">
   <div class="form_container">
     <div class="title_container">
       <h2>Sign Up</h2>
@@ -45,17 +44,19 @@
   <div class="field">
   <%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-</div>
+                 </div>
 
-
-        
-          
-          
-              
+                  <% if resource_name== :agent%>
                 <%= collection_select(:agent,:company_id,Company.all,:id,:name,{:prompt   => "Select a Company"})%>
-                <div class="button"  >
-                <%= f.submit "Sign up" %>
+                <%end%>
+                <div class="button">
+                <%= f.submit "Sign up" ,style:"width: 109px; margin-left:59px;"%>
+
               </div>
+              <div> <p>if already an account </p> <br> <%- if controller_name != 'sessions' %>
+  <%= link_to "Log in", new_session_path(resource_name) %><br />
+<% end %>
+</div>
         </form>
       </div>
     </div>
@@ -73,10 +74,11 @@
 
 
 
-<%= render "devise/shared/links" %>
+<!-- <%= render "devise/shared/links" %> -->
 
 <%end%>
 
 
 
-<%= render "devise/shared/links" %>
+<!-- <%= render "devise/shared/links" %> -->
+</div>

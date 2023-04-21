@@ -1,0 +1,26 @@
+
+<!-- app/views/property_types/new.html.erb -->
+<h1>New Property Type</h1>
+
+<%= form_with(model: @property_type, url: propertytype_index_path, local: true) do |form| %>
+  <% if @property_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@property_type.errors.count, "error") %> prohibited this property type from being saved:</h2>
+
+      <ul>
+        <% @property_type.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

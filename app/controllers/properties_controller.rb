@@ -10,14 +10,20 @@ class PropertiesController < ApplicationController
    @properties=Property.find(params[:id])
    @agents=Agent.all
    @commentable=@properties
-   @comments=@commentable.comments
+   @comments=@commentable.comments if 
    @comment=Comment.new
+   if @property.propertytype_id.present?
+   @property_type_name = Propertytype.find(@property.propertytype_id).name
+   end
+
   end
    def new
      @property=Property.new 
+     @propertytype =Propertytype.all
    end
   def create
     @property = Property.new(property_params)
+    
     @property.agent_id=current_agent.id
      respond_to do |format|
       if @property.save
@@ -43,16 +49,21 @@ end
      end
   end
   def destroy
-    Property.destroy(params[:id])
+    property = Property.find(params[:id])
+    property.appointments.destroy_all
+    property.comments.destroy_all
+    property.images.purge # or property.images.attachments.each(&:purge)
+    property.users.destroy_all
+    property.destroy
     redirect_to properties_path
   end
   private
 
   def property_params
-    params.require(:property).permit(:name,:descripition,:price,:address,:agent_id, images: [])
+    params.require(:property).permit(:name,:descripition,:price,:address,:agent_id , :propertytype_id, images: [])
   end
 
   def property_id
-    @property=Property.find(params[:id])
+    @property=Property.find_by(id: params[:id])
   end
 end

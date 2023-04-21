@@ -1,4 +1,4 @@
-<h1>Properties#edit</h1>
+<!-- <h1>Properties#edit</h1>
 <p>Find me in app/views/properties/edit.html.erb</p>
 <h3>Update  profile</h3>
 <%= form_with model: @property do |ats| %>
@@ -24,3 +24,72 @@
 <br>
     <%= ats.submit class: "btn btn-primary"%>
 <%end%>
+ -->
+
+
+ 
+
+<!-- <%= form_with model: @property do |f| %>
+<div class="container">
+    <div class="content">
+       <img src="https://res.cloudinary.com/debbsefe/image/upload/f_auto,c_fill,dpr_auto,e_grayscale/image_fz7n7w.webp" alt="header-image" class="cld-responsive">
+            <h1 class="form-title">Edit Here</h1>
+            <form>
+            <%= f.label :Name %>
+            <%= f.text_field :name %>
+            <div>
+            <%= f.label :descripition %>
+            <br>
+            <%= f.text_field :descripition %>
+            </div>
+            <%= f.label :price %>
+            <br>
+            <%= f.number_field :price %>
+            <br>
+            
+            <%= f.label :address %>
+            <%= f.text_field :address%>
+            
+            <%= f.submit%>
+            </form>
+        </div>
+ </div>
+<% end%> -->
+
+
+<ol>
+  <% @property.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+</ol>
+
+<%= form_with(model: @property) do |f| %>
+<div class="container">
+    <div class="content">
+       <img src="https://res.cloudinary.com/debbsefe/image/upload/f_auto,c_fill,dpr_auto,e_grayscale/image_fz7n7w.webp" alt="header-image" class="cld-responsive">
+            <h1 class="form-title">Register Here</h1>
+            <form>
+            <%= f.label :Name %>
+            <br>
+            <%= f.text_field :name %>
+            <div>
+            <br>
+            <%= f.label :descripition %>
+            <br>
+            <%= f.text_field :descripition %>
+            </div>
+            <%= f.label :price %>
+            <br>
+            <%= f.number_field :price %>
+            <br>
+            
+            <%= f.label :address %>
+            <br>
+            <%= f.text_field :address%>
+            <br>
+            
+               <%= f.submit%>
+            </form>
+        </div>
+ </div>
+<% end%>

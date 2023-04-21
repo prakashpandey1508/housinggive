@@ -1,13 +1,7 @@
-<h1>Make a Comment</h1>
-
-
+<h1>Make Comments </h2>
 <%= form_for [@commentable, @comment] do |f| %>
-  
-
   <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :content, class: 'form-control' %>
+    <%= f.text_field :content, class: 'form-control  placeholder="Type comment..."' %>
   </div>
-
   <%= f.submit "Save Comment", class: 'btn btn-primary' %>
 <% end %>

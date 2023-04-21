@@ -1,5 +1,15 @@
-<h1>Find  Properties in ....</h1>
+<div class="hero-image">
+  <div class="hero-text">
+    <!-- <h1 style="font-size:50px font-color:red">Find Property Here</h1> -->
+    <p style="font-size:50px">Find Property Here</p>
+    
+  </div>
+</div>
 
+
+
+
+<!-- 
   <div class="row">
   <% @properties.each do |property| %>
   <% if property.images.attached? %> 
@@ -9,11 +19,9 @@
   <%= link_to(image_tag(property.images[image],style:"width:400px;height;700px;"), property_path(property)) %>
   <div>
   <% elsif agent_signed_in? %>
-     <% if property.agent_id == current_agent.id  %>
   <div class="column">
   <%= link_to(image_tag(property.images[image],style:"width:400px;height;700px;"), property_path(property)) %>
   <div>
-     <% end %>
   <%else %>
   <div class="column">
   <%= image_tag(property.images[image],style:"width:400px;height;700px;") %>
@@ -24,6 +32,67 @@
   <%end%>
   <%end%>
   <%end %>
-  </div>
+  </div> -->
 
-  
+
+
+<!-- 
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div> -->
+
+
+<div class="row">
+  <% @properties.each do |property| %>
+    <% if property.images.attached? %> 
+      <% (0...property.images.count).each do |image| %>
+        <% if user_signed_in? || agent_signed_in? %>
+          <!-- <div class="column">
+            <%= link_to(image_tag(property.images[image],style:"width:400px;height;700px;"), property_path(property)) %>
+          </div> -->
+
+
+             <div class="column">
+            <div class="card" style="width: 18rem;">
+              <%= image_tag(property.images[image], class: "card-img-top", alt: "Card image cap") %>
+              <div class="card-body">
+                <h5 class="card-title"><%= property.name %></h5>
+                <p class="card-text"><%= property.address %></p>
+                <%= link_to "View Details", property_path(property), class: "btn btn-primary" , style: "text-decoration: none;"%>
+              </div>
+            </div>
+          </div>
+
+
+
+        <% else %>
+          <div class="column">
+            <div class="card" style="width: 18rem;">
+              <%= image_tag(property.images[image], class: "card-img-top", alt: "Card image cap") %>
+              <div class="card-body">
+                <h5 class="card-title"><%= property.name %></h5>
+                <p class="card-text"><%= property.address %></p>
+                <%= link_to "View Details", property_path(property), class: "btn btn-primary" , style: "text-decoration: none;"%>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+<!-- Footer -->
+<footer class="page-footer font-small blue pt-4" style ="margin-top:auto;
+margin-left: 0%;background-color:#cf9f9f;height:70px;">
+  <div class="footer-copyright text-center py-2">© 2023 Copyright:
+    <a href="/"> House4u.com</a>
+  </div>
+ 
+
+</footer>

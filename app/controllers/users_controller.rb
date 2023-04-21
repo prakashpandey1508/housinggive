@@ -18,9 +18,10 @@ def create
 end
 
 def show
-    @user=User.find(params[:id])
-    
-    @addresses=@user.address.all
+    @users=User.all
+
+    @users=User.find_by(params[:id])
+
     
 end
 private

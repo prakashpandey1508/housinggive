@@ -5,16 +5,12 @@ class AgentsController < ApplicationController
   end
 
   def show
-   agent_id
+    agent_id
    @agents=Agent.find(params[:id])
    @companies=Company.all
    @commentable=@agents
    @comments=@commentable.comments
    @comment=Comment.new
-
-
-
-
 
   end
    def new
@@ -44,12 +40,12 @@ class AgentsController < ApplicationController
   def destroy
     Agent.destroy(params[:id])
     
-    redirect_to agents_path
+    redirect_to root_path
   end
   private
 
   def agent_params
-    params.require(:agent).permit(:name,:age,:number, :email,:address,:company_id)
+    params.require(:agent).permit(:name,:age,:number, :email,:address,:company_id,:created_at)
   end
 
   def agent_id

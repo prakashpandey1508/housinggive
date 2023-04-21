@@ -11,13 +11,26 @@ class CommentsController < ApplicationController
 
   def create
     @comment  = @commentable.comments.create(params.require(:comment).permit!)
+    @comment.user_id=current_user.id
 
     if @comment.save
       redirect_to @commentable, notice: "Comment created."
+      
     else
       render :new
     end
   end
+
+
+
+  def destroy
+    @comment = @commentable.comments.find(params[:id])
+    @comment.destroy
+    redirect_to @commentable, notice: "Comment deleted."
+  end
+
+
+
 
 private
 

@@ -1,0 +1,18 @@
+<h1>Propertytype index page</h1>
+<%= link_to "create a property type" ,new_propertytype_path%>
+<table class="table table-bordered border-primary">
+<% if @property_types.try(:any?) %>
+  <% @property_types.each do |t| %>
+  <tbody>
+    <tr>
+      <th scope="row"><%= t.name%></th>
+          <td><%= link_to 'edit',edit_propertytype_path(t)%></td>
+
+          <td><%= button_to 'remove',propertytype_path(t),method:'delete',data:"are you confirm" %></td>
+             </tr>
+  </tbody>
+  <% end %>
+<% else %>
+  <p>No property types found.</p>
+<% end %>
+</table>

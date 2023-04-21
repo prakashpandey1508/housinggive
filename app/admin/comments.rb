@@ -5,7 +5,7 @@ ActiveAdmin.register Comment do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :content, :commentable_type, :commentable_id
+  permit_params :content, :commentable_type, :commentable_id, :user_id
   #
   # or
   #
@@ -14,5 +14,23 @@ ActiveAdmin.register Comment do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+
+
+  scope :all
+  scope :property, :default => true do |like|
+    Comment.property
+  end
+  scope :agent, :default => true do |like|
+    Comment.agent
+  end
+  
+
+
+
+
+
+
+
+
   
 end

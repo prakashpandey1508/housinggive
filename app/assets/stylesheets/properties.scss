@@ -64,7 +64,7 @@ select{
 }
 .button{
     color:#ffffff;
-    background-color: #4caf50;
+    background-color: #ffffff;
     height:40px;
     width:25%;
     margin-top:15px;
@@ -81,3 +81,16 @@ select{
 button:hover{
     background-color:#333333;
 }
+
+#carouselExampleControls {
+  margin: 0 auto; /* Center align the carousel */
+  width: 60%; /* Set the carousel width to 50% */
+  
+}
+.row1{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 410px;
+    margin-top: 20px;
+}
+
